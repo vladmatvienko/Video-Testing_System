@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.SignInController">
+   <children>
+      <Pane layoutX="7.0" prefHeight="402.0" prefWidth="601.0">
+         <children>
+            <Hyperlink fx:id="RegistationLink" layoutX="272.0" layoutY="352.0" onAction="#onRegistrationLinkClick" text="Регистрация" />
+            <Label fx:id="SignINLogin" layoutX="169.0" layoutY="58.0" text="Логин" />
+            <Label fx:id="SignINPassword" layoutX="169.0" layoutY="120.0" text="Пароль" />
+            <TextField fx:id="loginField" layoutX="263.0" layoutY="54.0" />
+            <TextField fx:id="passwordField" layoutX="263.0" layoutY="116.0" />
+            <Button fx:id="SignINButton" layoutX="312.0" layoutY="165.0" mnemonicParsing="false" onAction="#onSigINButtonClick" text="Войти" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
