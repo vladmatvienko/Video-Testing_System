@@ -20,10 +20,15 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+        //Установка иконки приложения
+        /*InputStream iconStream = getClass().getResourceAsStream("/icon.png");
+          Image image = new Image(iconStream);
+          primaryStage.getIcons().add(image);*/
     }
+    static int passwordInputEfforts = 0;
     public static void main(String[] args)  {
         launch();
-        
+
 
     }
 }

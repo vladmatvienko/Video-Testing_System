@@ -27,15 +27,38 @@ public class DataBaseHandle extends Configs {
             throw new RuntimeException(e);
         }
     }
+    //метод для получения массива с логинами(сделать так, чтобы он брал сразу только логины, а не все)
     public ArrayList<String> getLoginArray() throws SQLException, ClassNotFoundException {
         String insert = "SELECT * FROM " + Const.USER_TABLE;
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert);
-        ArrayList<String> logins = new ArrayList<>();
+        ArrayList<String> loginsArray = new ArrayList<>();
         while (resultSet.next()){
-            logins.add(resultSet.getString("login"));
+            loginsArray.add(resultSet.getString("login"));
+
         }
-        return logins;
+        return loginsArray;
     }
-    //ме для извлечения информации из БД
+    public ArrayList<String> getPasswordArray() throws SQLException, ClassNotFoundException {
+        String insert = "SELECT * FROM " + Const.USER_TABLE;
+        Statement statement = getDbConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery(insert);
+        ArrayList<String> passwordsArray = new ArrayList<>();
+        while (resultSet.next()){
+            passwordsArray.add(resultSet.getString("login"));
+
+        }
+        return passwordsArray;
+    }
+    public ArrayList<String> getSecretAnswer() throws SQLException, ClassNotFoundException {
+        String insert = "SELECT * FROM " + Const.USER_TABLE;
+        Statement statement = getDbConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery(insert);
+        ArrayList<String> secretAnswerArray = new ArrayList<>();
+        while (resultSet.next()){
+            secretAnswerArray.add(resultSet.getString("secretQuestion"));
+        }
+        return secretAnswerArray;
+    }
+
 }

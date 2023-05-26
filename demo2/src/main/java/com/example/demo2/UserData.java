@@ -67,7 +67,7 @@ public class UserData {
     }
     public String getEmail(){
         return email;}
-    public void setPhoneNuber(String phoneNumber){
+    public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
     public String getPhoneNumber(){

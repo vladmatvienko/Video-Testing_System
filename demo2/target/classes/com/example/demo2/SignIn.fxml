@@ -13,6 +13,10 @@
             <TextField fx:id="loginField" layoutX="263.0" layoutY="54.0" />
             <TextField fx:id="passwordField" layoutX="263.0" layoutY="116.0" />
             <Button fx:id="SignINButton" layoutX="312.0" layoutY="165.0" mnemonicParsing="false" onAction="#onSigINButtonClick" text="Войти" />
+            <Label fx:id="incorrectLogin" layoutX="453.0" layoutY="58.0" textFill="RED" />
+            <Label fx:id="incorrectPassword" layoutX="453.0" layoutY="120.0" textFill="RED" />
+            <Label fx:id="banText" layoutX="322.0" layoutY="234.0" text="Label" />
+            <TextField fx:id="secretQuestionField" layoutX="262.0" layoutY="269.0" />
          </children>
       </Pane>
    </children>
