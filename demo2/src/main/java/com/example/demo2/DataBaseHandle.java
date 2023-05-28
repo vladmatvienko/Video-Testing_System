@@ -18,7 +18,8 @@ public class DataBaseHandle extends Configs {
                + Const.USER_NAME + ")" + " " + "VALUES(?)"; //какая-то ошибка считывания и подключения
         try {
        PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        prSt.setString(1, name);
+        prSt.setString(1, name); //проверить считает с нуля или 1
+        //изменить метод для вставки фамилии, почты и тд по аналогии...
 
             prSt.executeUpdate();
         } catch (SQLException e) {
@@ -45,7 +46,7 @@ public class DataBaseHandle extends Configs {
         ResultSet resultSet = statement.executeQuery(insert);
         ArrayList<String> passwordsArray = new ArrayList<>();
         while (resultSet.next()){
-            passwordsArray.add(resultSet.getString("login"));
+            passwordsArray.add(resultSet.getString("password"));
 
         }
         return passwordsArray;

@@ -55,7 +55,7 @@ public class SignInController {
     @FXML
     void onRegistrationLinkClick(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("SignUp.fxml"));
+        loader.setLocation(getClass().getResource("SignUp.fxml"));// Для Влада
         try {
             loader.load();
         } catch (IOException e) {
