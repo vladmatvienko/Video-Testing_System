@@ -49,9 +49,6 @@ public class SignInController {
     //сделать его скрытым по умолчанию есть метод secretQuestionField.setVisible(false);
     @FXML
     private TextField secretQuestionField;
-
-
-
     @FXML
     void onRegistrationLinkClick(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
@@ -67,16 +64,37 @@ public class SignInController {
         stage.showAndWait();
 
     }
+
+    @FXML
+    void click(ActionEvent event) throws SQLException, ClassNotFoundException {
+        UserData user = new UserData();
+        user.setLogin(String.valueOf(loginField.getText()));
+        user.setSecretQuestion(String.valueOf(secretQuestionField.getText()));
+        DataBaseHandle dataBase = new DataBaseHandle();
+        if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
+              System.exit(0);
+            //переход в окно работы с админом и написания текста
+             }
+    }
+
+    @FXML
+    void initialize(){
+        secretQuestionField.setVisible(false);
+    }
     @FXML
     void onSigINButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
         UserData user = new UserData();
         DataBaseHandle dataBase = new DataBaseHandle();
         user.setLogin(String.valueOf(loginField.getText()));
         user.setPassword(String.valueOf(passwordField.getText()));
-        dataBase.getLoginArray();
+        //dataBase.getLoginArray();
         if(HelloApplication.passwordInputEfforts == 5 ){
             //нужно подключить ввод секретного слова в этом же месте или в другом окне
-
+            secretQuestionField.setVisible(true);
+           // if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
+              //  System.exit(0);
+                //переход в окно работы с админом и написания текста
+           // }
         }
         if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword())){
            FXMLLoader loader = new FXMLLoader();

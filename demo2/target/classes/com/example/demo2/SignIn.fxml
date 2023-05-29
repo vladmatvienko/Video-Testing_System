@@ -16,7 +16,7 @@
             <Label fx:id="incorrectLogin" layoutX="453.0" layoutY="58.0" textFill="RED" />
             <Label fx:id="incorrectPassword" layoutX="453.0" layoutY="120.0" textFill="RED" />
             <Label fx:id="banText" layoutX="322.0" layoutY="234.0" text="Label" />
-            <TextField fx:id="secretQuestionField" layoutX="262.0" layoutY="269.0" />
+            <TextField fx:id="secretQuestionField" layoutX="262.0" layoutY="269.0" onAction="#click" />
          </children>
       </Pane>
    </children>

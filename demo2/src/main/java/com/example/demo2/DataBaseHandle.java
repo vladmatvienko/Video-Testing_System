@@ -1,17 +1,19 @@
 package com.example.demo2;
 import java.sql.*;
 import java.util.ArrayList;
-
+//класс контроля действий с БД, писать все методы, связанные с работой с БД здесь
 public class DataBaseHandle extends Configs {
     Connection dbConnection;
+    // метод подключения к БД, возвращает подключение
     public Connection getDbConnection() throws ClassNotFoundException, SQLException{
      String connectionString = "jdbc:mysql://" + dbHost + ":" +
              dbPort + "/" + dbName;
-     Class.forName("com.mysql.cj.jdbc.Driver");
+     Class.forName("com.mysql.cj.jdbc.Driver"); // драйвер необходимо скачать
              dbConnection = DriverManager.getConnection(connectionString,
                     dbUser, dbPass);
      return dbConnection;
     }
+    // метод добавление пользователя
     public void SignUpUser(String name){ //включить остальные параметры пользователя
        String insert = //"INSERT INTO users(name)\n"+"VALUES(?)";
         "INSERT INTO" + " " + Const.USER_TABLE + "("
@@ -29,17 +31,19 @@ public class DataBaseHandle extends Configs {
         }
     }
     //метод для получения массива с логинами(сделать так, чтобы он брал сразу только логины, а не все)
+    //возвращает ArrayList всех логинов
     public ArrayList<String> getLoginArray() throws SQLException, ClassNotFoundException {
-        String insert = "SELECT * FROM " + Const.USER_TABLE;
+        String insert = "SELECT * FROM " + Const.USER_TABLE; // сюда пишем команду MySQL
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert);
         ArrayList<String> loginsArray = new ArrayList<>();
         while (resultSet.next()){
-            loginsArray.add(resultSet.getString("login"));
+            loginsArray.add(resultSet.getString("login")); //название нужной колонки
 
         }
         return loginsArray;
     }
+    // метод получения паролей, все точно также, как и в логинах
     public ArrayList<String> getPasswordArray() throws SQLException, ClassNotFoundException {
         String insert = "SELECT * FROM " + Const.USER_TABLE;
         Statement statement = getDbConnection().createStatement();
@@ -51,15 +55,19 @@ public class DataBaseHandle extends Configs {
         }
         return passwordsArray;
     }
-    public ArrayList<String> getSecretAnswer() throws SQLException, ClassNotFoundException {
-        String insert = "SELECT * FROM " + Const.USER_TABLE;
+    // метод получения ответа на секретный вопрос
+    // добавить в БД секретный вопрос
+    public StringBuilder getSecretAnswer(String login) throws SQLException, ClassNotFoundException {
+        //String insert = "SELECT" + Const.USER_SECRETANSWER +  "FROM " + Const.USER_TABLE + "WHERE" + Const.USER_ID = " + id + "; команда выдает ошибку
+        String insert1 = "SELECT "+ Const.USER_SECRETANSWER+" FROM "+ Const.USER_TABLE+" WHERE "+Const.USER_lOGIN +" = '"+login+"' ";
         Statement statement = getDbConnection().createStatement();
-        ResultSet resultSet = statement.executeQuery(insert);
-        ArrayList<String> secretAnswerArray = new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery(insert1);
+        //ArrayList<String> secretAnswerArray = new ArrayList<>(); // если нужно будет переделать в массив
+        StringBuilder stringAnswer = new StringBuilder();
         while (resultSet.next()){
-            secretAnswerArray.add(resultSet.getString("secretQuestion"));
+            stringAnswer.append(resultSet.getString("secretQuestion"));
         }
-        return secretAnswerArray;
+        return stringAnswer;
     }
 
 }
