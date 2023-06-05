@@ -13,16 +13,6 @@ public class HelloController {
 
     @FXML
     protected void onHelloButtonClick() {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("SignIn.fxml"));
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
+       HelloApplication.switchToNewWindow("SignIn");
     }
 }

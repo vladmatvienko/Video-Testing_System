@@ -13,6 +13,7 @@ public class Const {
     public static final String USER_GROUP = "group";
     public static final String USER_EMAIL = "email";
     public static final String USER_PHONENUMBER = "phoneNumber";
+    public static final String USER_ACCESS = "access";
 
 
 

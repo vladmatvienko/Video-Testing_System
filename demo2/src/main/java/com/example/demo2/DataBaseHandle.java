@@ -24,9 +24,7 @@ public class DataBaseHandle extends Configs {
         //изменить метод для вставки фамилии, почты и тд по аналогии...
 
             prSt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -69,5 +67,30 @@ public class DataBaseHandle extends Configs {
         }
         return stringAnswer;
     }
+    /*public String getThisPassword(String login) throws SQLException, ClassNotFoundException {
+       String insert = "SELECT " + Const.USER_PASSWORD + " FROM " + Const.USER_TABLE+ " WHERE " + Const.USER_lOGIN + " = '"+login+"'";
+       Statement statement = getDbConnection().createStatement();
+       ResultSet resultSet = statement.executeQuery(insert);
+       String password = resultSet.getString("password");
+       return password;
+    }ошибка Illegal operation on empty result set.*/
+    public void setPassword(String password, String login) throws SQLException, ClassNotFoundException {
+        //UPDATE elements SET n2 = 30 WHERE id = 22;
+        String insert = "UPDATE " + Const.USER_TABLE + " SET " + Const.USER_PASSWORD+ " = '"+password+"' "+ "WHERE " + Const.USER_lOGIN + " = '"+login+"'";
+        Statement statement = getDbConnection().createStatement();
+        statement.executeUpdate(insert);
+
+    }
+     public void ban(String login) throws SQLException, ClassNotFoundException {
+         String insert = "UPDATE " + Const.USER_TABLE + " SET " + Const.USER_ACCESS+ " = 0 "+ "WHERE " + Const.USER_lOGIN + " = '"+login+"'";
+         Statement statement = getDbConnection().createStatement();
+         statement.executeUpdate(insert);
+    }
+     public void antiban(String login) throws SQLException, ClassNotFoundException {
+         String insert = "UPDATE " + Const.USER_TABLE + " SET " + Const.USER_ACCESS+ " = 1 "+ "WHERE " + Const.USER_lOGIN + " = '"+login+"'";
+         Statement statement = getDbConnection().createStatement();
+         statement.executeUpdate(insert);
+
+     }
 
 }

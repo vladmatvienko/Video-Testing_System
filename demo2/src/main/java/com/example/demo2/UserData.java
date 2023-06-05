@@ -1,3 +1,5 @@
+package com.example.demo2;
+
 import java.util.regex.*;
 public class UserData {
     private String login;
@@ -17,16 +19,16 @@ public class UserData {
     public String getLogin(){
         return login;}
     public void setPassword(String password){//Нужно зациклить ввод пароля, пока он не надежен вводится новый
-        String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*_).{8,20}$";
+       /*String passwordPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*_).{8,20}$";
         Pattern CheckThePassword = Pattern.compile(passwordPattern);
         Matcher m = CheckThePassword.matcher(password);
         if(m.matches() == true) {
-
+*/
             this.password = password;
-        }
+       /* }
         else{
             System.out.println("Введите пароль надежнее!");
-        }
+        }*/
     }
     public String getPassword(){
         return password;
@@ -65,7 +67,7 @@ public class UserData {
     }
     public String getEmail(){
         return email;}
-    public void setPhoneNuber(String phoneNumber){
+    public void setPhoneNumber(String phoneNumber){
         this.phoneNumber = phoneNumber;
     }
     public String getPhoneNumber(){

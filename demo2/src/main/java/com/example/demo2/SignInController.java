@@ -30,7 +30,7 @@ public class SignInController {
     private Label SignINPassword;
 
     @FXML
-    private TextField loginField;
+    private  TextField loginField;
 
     @FXML
     private TextField passwordField;
@@ -46,35 +46,34 @@ public class SignInController {
 
     @FXML
     private Label banText;
+
+    public static String loginOfCurrentUser;
+
+
     //сделать его скрытым по умолчанию есть метод secretQuestionField.setVisible(false);
     @FXML
     private TextField secretQuestionField;
     @FXML
     void onRegistrationLinkClick(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("SignUp.fxml"));// Для Влада
-        try {
-            loader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        Parent root = loader.getRoot();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.showAndWait();
-
+       HelloApplication.switchToNewWindow("SignUp");
     }
 
     @FXML
     void click(ActionEvent event) throws SQLException, ClassNotFoundException {
         UserData user = new UserData();
+        loginOfCurrentUser = loginField.getText();
         user.setLogin(String.valueOf(loginField.getText()));
         user.setSecretQuestion(String.valueOf(secretQuestionField.getText()));
         DataBaseHandle dataBase = new DataBaseHandle();
+        dataBase.ban(loginOfCurrentUser);
         if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
-              System.exit(0);
+            HelloApplication.switchToNewWindow("MessageToAdmin");
             //переход в окно работы с админом и написания текста
              }
+        else {
+            //восстановление пароля
+           HelloApplication.switchToNewWindow("СhangePassword");
+        }
     }
 
     @FXML
@@ -97,17 +96,7 @@ public class SignInController {
            // }
         }
         if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword())){
-           FXMLLoader loader = new FXMLLoader();
-           loader.setLocation(HelloApplication.class.getResource("Proga.fxml"));
-           try {
-                loader.load();
-            } catch (IOException e) {
-               throw new RuntimeException(e);
-            }
-            Parent root = loader.getRoot();
-           Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+           HelloApplication.switchToNewWindow("Proga");
         }
                   else if(!dataBase.getLoginArray().contains(user.getLogin())){
                            incorrectLogin.setText("Неверный логин");
