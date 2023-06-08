@@ -92,5 +92,16 @@ public class DataBaseHandle extends Configs {
          statement.executeUpdate(insert);
 
      }
+      public int checkAccess(String login) throws SQLException, ClassNotFoundException {
+        String insert = "SELECT " + Const.USER_ACCESS+ " FROM " + Const.USER_TABLE+" WHERE "+Const.USER_lOGIN +" = '"+login+"' ";
+        Statement statement = getDbConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery(insert);
+        int access = 3;
+          while (resultSet.next()){
+              access = resultSet.getInt("access");
+              //System.out.println(access);
+              }
+       return access;
+    }
 
 }

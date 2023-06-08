@@ -50,6 +50,7 @@ public class SignInController {
     public static String loginOfCurrentUser;
 
 
+
     //сделать его скрытым по умолчанию есть метод secretQuestionField.setVisible(false);
     @FXML
     private TextField secretQuestionField;
@@ -65,9 +66,10 @@ public class SignInController {
         user.setLogin(String.valueOf(loginField.getText()));
         user.setSecretQuestion(String.valueOf(secretQuestionField.getText()));
         DataBaseHandle dataBase = new DataBaseHandle();
-        dataBase.ban(loginOfCurrentUser);
+
         if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
             HelloApplication.switchToNewWindow("MessageToAdmin");
+            dataBase.ban(loginOfCurrentUser);
             //переход в окно работы с админом и написания текста
              }
         else {
@@ -95,8 +97,21 @@ public class SignInController {
                 //переход в окно работы с админом и написания текста
            // }
         }
-        if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword())){
-           HelloApplication.switchToNewWindow("Proga");
+        if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword()))
+        {   System.out.println(user.getLogin());
+            //System.out.println("1"+ dataBase.checkAccess(loginOfCurrentUser )+ "2");
+            if(dataBase.checkAccess(user.getLogin()) == 0){//выводит значение в независимости от логина и параметра доступа?
+                System.out.println("Нет доступа !");
+                } else if (dataBase.checkAccess(user.getLogin()) == 1) {
+                //переход в окно приложения
+                System.out.println("Я узнаю Вас, велКам!");
+            }
+
+
+
+
+            //HelloApplication.switchToNewWindow("Proga");
+
         }
                   else if(!dataBase.getLoginArray().contains(user.getLogin())){
                            incorrectLogin.setText("Неверный логин");
