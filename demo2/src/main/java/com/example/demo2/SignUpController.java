@@ -2,6 +2,8 @@ package com.example.demo2;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -80,7 +82,7 @@ public class SignUpController {
                          user.setSecretAnswer("-");
                          user.setGroup("user");
                          user.setAccess(1);
-                         loginOfCurrentUser = user.getLogin();
+                         loginOfCurrentUser = user.getLogin().trim();
                         //проверить этот метод *
                          db.SignUpUser(user.getName(), user.getSurname(),user.getEmail(), user.getLogin(), user.getPassword(), user.getFatherName(), user.getBirthDate(), user.getGroup(), user.getSecretQuestion(), user.getPhoneNumber(), user.getAccess(), user.getSecretAnswer());
                          secretQuestionCheckBox.setOnAction(e -> HelloApplication.switchToNewWindow("SecretQuestion"));
@@ -88,6 +90,11 @@ public class SignUpController {
                          //stage.close();//может сделать окно подтверждения регистрации?
 
     }}}
+
+    @FXML
+    void loginFieldAction(KeyEvent event) {
+        loginIsUsed.setVisible(false);
+    }
     //альтернатива *
     //@FXML
     //void addSecretQuestion(ActionEvent event) {
