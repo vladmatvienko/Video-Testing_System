@@ -2,22 +2,35 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.SignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E0FFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.SignInController">
    <children>
-      <Pane layoutX="7.0" prefHeight="402.0" prefWidth="601.0">
+      <AnchorPane layoutY="102.0" prefHeight="298.0" prefWidth="600.0" style="-fx-background-color: CD5C5C;">
          <children>
-            <Hyperlink fx:id="RegistationLink" layoutX="272.0" layoutY="352.0" onAction="#onRegistrationLinkClick" text="Регистрация" />
-            <Label fx:id="SignINLogin" layoutX="169.0" layoutY="58.0" text="Логин" />
-            <Label fx:id="SignINPassword" layoutX="169.0" layoutY="120.0" text="Пароль" />
-            <TextField fx:id="loginField" layoutX="263.0" layoutY="54.0" />
-            <TextField fx:id="passwordField" layoutX="263.0" layoutY="116.0" />
-            <Button fx:id="SignINButton" layoutX="312.0" layoutY="165.0" mnemonicParsing="false" onAction="#onSigINButtonClick" text="Войти" />
-            <Label fx:id="incorrectLogin" layoutX="453.0" layoutY="58.0" textFill="RED" />
-            <Label fx:id="incorrectPassword" layoutX="453.0" layoutY="120.0" textFill="RED" />
-            <Label fx:id="banText" layoutX="322.0" layoutY="234.0" text="Label" />
-            <TextField fx:id="secretQuestionField" layoutX="262.0" layoutY="269.0" onAction="#click" />
+            <TextField fx:id="login_field" layoutX="161.0" layoutY="85.0" prefHeight="26.0" prefWidth="275.0" promptText="login:" style="-fx-background-color: E0FFFF; -fx-region-border: 5;" />
+            <PasswordField fx:id="password_field" layoutX="161.0" layoutY="122.0" prefHeight="26.0" prefWidth="275.0" promptText="password:" style="-fx-background-color: E0FFFF; -fx-region-border: 5;" />
+            <Text fill="LIGHTCYAN" layoutX="225.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Авторизация" wrappingWidth="146.94219970703125">
+               <font>
+                  <Font name="Niagara Engraved" size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="authSignInButton" layoutX="228.0" layoutY="193.0" mnemonicParsing="false" onAction="#onSigINButtonClick" prefHeight="90.0" prefWidth="140.0" style="-fx-background-color: F0E68C; -fx-region-border: 5;" text="Войти" textFill="INDIANRED">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <AnchorPane prefHeight="14.0" prefWidth="600.0" style="-fx-background-color: F0E68C;" />
+            <Label fx:id="incorrectLogin" layoutX="448.0" layoutY="85.0" prefHeight="26.0" prefWidth="120.0" textFill="KHAKI" />
+            <Label fx:id="incorrectPassword" layoutX="448.0" layoutY="122.0" prefHeight="26.0" prefWidth="120.0" textFill="KHAKI" />
+            <Label fx:id="banText" layoutX="220.0" layoutY="161.0" prefHeight="18.0" prefWidth="160.0" textFill="KHAKI" />
          </children>
-      </Pane>
+      </AnchorPane>
+      <Text fill="INDIANRED" layoutX="70.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Video-testing Application">
+         <font>
+            <Font name="Nirmala UI Bold" size="38.0" />
+         </font>
+      </Text>
+      <Button fx:id="loginSignUpButton" layoutX="450.0" layoutY="14.0" mnemonicParsing="false" onAction="#onRegistrationLinkClick" prefHeight="26.0" prefWidth="140.0" style="-fx-background-color: F0E68C;" text="Зарегистрироваться" textFill="INDIANRED" />
    </children>
 </AnchorPane>

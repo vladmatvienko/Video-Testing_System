@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.MessageToAdminController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.MessageToAdminController">
    <children>
       <TextArea fx:id="adminRequestText" layoutX="133.0" layoutY="57.0" prefHeight="266.0" prefWidth="334.0" />
       <Button fx:id="shareWithAdminButton" layoutX="243.0" layoutY="340.0" mnemonicParsing="false" onAction="#clickShareWithAdminButton" text="Передать Админу" />

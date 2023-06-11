@@ -2,6 +2,7 @@ package com.example.demo2;
 
 import java.util.regex.*;
 public class UserData {
+    private int id;
     private String login;
     private String password;
     private String name;
@@ -11,8 +12,30 @@ public class UserData {
     private String group;
     private String secretQuestion;
     private String email;
+    private int access;
     private String phoneNumber;
+    private String secretAnswer;
+
+    public void setSecretAnswer(String secretAnswer){
+        this.secretAnswer = secretAnswer;
+    }
+    public String getSecretAnswer(){
+        return secretAnswer;
+    }
     //Нужно сделать регулярки для каждого метода Set
+
+    public void setId(int id){
+        this.id = id;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setAccess(int access){
+        this.access = access;
+    }
+    public int getAccess(){
+        return access;
+    }
     public void setLogin(String login){
         this.login = login;
     }
