@@ -16,7 +16,7 @@ public class HelloApplication extends Application {
     }
     static String[] VideoName = {"0", "1", "2", "3"};
     static int Amount_of_Video = VideoName.length;
-    static int ID = 0;
+    static int ID = 1-1;
     public static void main(String[] args) {
         launch();
     }
