@@ -8,22 +8,23 @@
    <children>
       <AnchorPane layoutY="102.0" prefHeight="298.0" prefWidth="600.0" style="-fx-background-color: CD5C5C;">
          <children>
-            <TextField fx:id="login_field" layoutX="161.0" layoutY="85.0" prefHeight="26.0" prefWidth="275.0" promptText="login:" style="-fx-background-color: E0FFFF; -fx-region-border: 5;" />
-            <PasswordField fx:id="password_field" layoutX="161.0" layoutY="122.0" prefHeight="26.0" prefWidth="275.0" promptText="password:" style="-fx-background-color: E0FFFF; -fx-region-border: 5;" />
+            <TextField fx:id="login_field" layoutX="161.0" layoutY="85.0" onKeyTyped="#newInputLog" prefHeight="26.0" prefWidth="275.0" promptText="login:" style="-fx-background-color: E0FFFF; -fx-region-border: 5;" />
+            <PasswordField fx:id="password_field" layoutX="161.0" layoutY="122.0" onKeyTyped="#newInputPass" prefHeight="26.0" prefWidth="275.0" promptText="password:" style="-fx-background-color: E0FFFF; -fx-region-border: 5;" />
             <Text fill="LIGHTCYAN" layoutX="225.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Авторизация" wrappingWidth="146.94219970703125">
                <font>
-                  <Font name="Niagara Engraved" size="24.0" />
+                  <Font name="Nirmala UI" size="24.0" />
                </font>
             </Text>
-            <Button fx:id="authSignInButton" layoutX="228.0" layoutY="193.0" mnemonicParsing="false" onAction="#onSigINButtonClick" prefHeight="90.0" prefWidth="140.0" style="-fx-background-color: F0E68C; -fx-region-border: 5;" text="Войти" textFill="INDIANRED">
+            <Button fx:id="authSignInButton" layoutX="235.0" layoutY="223.0" mnemonicParsing="false" onAction="#onSigINButtonClick" prefHeight="51.0" prefWidth="130.0" style="-fx-background-color: F0E68C; -fx-region-border: 5;" text="Войти" textFill="INDIANRED">
                <font>
                   <Font size="24.0" />
                </font>
             </Button>
             <AnchorPane prefHeight="14.0" prefWidth="600.0" style="-fx-background-color: F0E68C;" />
-            <Label fx:id="incorrectLogin" layoutX="448.0" layoutY="85.0" prefHeight="26.0" prefWidth="120.0" textFill="KHAKI" />
-            <Label fx:id="incorrectPassword" layoutX="448.0" layoutY="122.0" prefHeight="26.0" prefWidth="120.0" textFill="KHAKI" />
-            <Label fx:id="banText" layoutX="220.0" layoutY="161.0" prefHeight="18.0" prefWidth="160.0" textFill="KHAKI" />
+            <Label fx:id="incorrectLogin" layoutX="448.0" layoutY="85.0" prefHeight="26.0" prefWidth="120.0" text="Неверный логин!" textFill="KHAKI" />
+            <Label fx:id="incorrectPassword" layoutX="448.0" layoutY="122.0" prefHeight="26.0" prefWidth="120.0" text="Неверный пароль!" textFill="KHAKI" />
+            <Label fx:id="banText" layoutX="196.0" layoutY="159.0" prefHeight="18.0" prefWidth="208.0" text="Ваша учетная запись заблокирована!" textFill="KHAKI" />
+            <Hyperlink fx:id="resetPasswordLink" layoutX="237.0" layoutY="191.0" onAction="#resetPasswordLinkClick" text="Восстановить пароль" textFill="KHAKI" underline="true" />
          </children>
       </AnchorPane>
       <Text fill="INDIANRED" layoutX="70.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Video-testing Application">

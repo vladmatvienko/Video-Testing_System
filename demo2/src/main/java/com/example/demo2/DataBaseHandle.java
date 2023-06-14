@@ -72,15 +72,15 @@ public class DataBaseHandle extends Configs {
     }
     // метод получения ответа на секретный вопрос
     // добавить в БД секретный вопрос
-    public StringBuilder getSecretAnswer(String login) throws SQLException, ClassNotFoundException {
+    public String getSecretQuestion(String login) throws SQLException, ClassNotFoundException {
         //String insert = "SELECT" + Const.USER_SECRETANSWER +  "FROM " + Const.USER_TABLE + "WHERE" + Const.USER_ID = " + id + "; команда выдает ошибку
-        String insert1 = "SELECT "+ Const.USER_SECRETANSWER+" FROM "+ Const.USER_TABLE+" WHERE "+Const.USER_lOGIN +" = '"+login+"' ";
+        String insert1 = "SELECT "+ "`"+ Const.USER_SECRET_QUESTION + "`"+" FROM "+ "`"+ Const.USER_TABLE + "`"+" WHERE "+ "`"+Const.USER_lOGIN + "`"+" = '"+login+"' ";
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert1);
         //ArrayList<String> secretAnswerArray = new ArrayList<>(); // если нужно будет переделать в массив
-        StringBuilder stringAnswer = new StringBuilder();
+        String stringAnswer = null;
         while (resultSet.next()){
-            stringAnswer.append(resultSet.getString("secretQuestion"));
+            stringAnswer = resultSet.getString("secretQuestion");
         }
         return stringAnswer;
     }

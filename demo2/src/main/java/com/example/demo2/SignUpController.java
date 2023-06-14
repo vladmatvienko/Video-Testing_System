@@ -49,6 +49,7 @@ public class SignUpController {
     void initialize() {
         fillAllGapsLabel.setVisible(false);
         loginIsUsed.setVisible(false);
+        secretQuestionCheckBox.setVisible(false);
     }
 
     @FXML
@@ -85,6 +86,7 @@ public class SignUpController {
                          loginOfCurrentUser = user.getLogin().trim();
                         //проверить этот метод *
                          db.SignUpUser(user.getName(), user.getSurname(),user.getEmail(), user.getLogin(), user.getPassword(), user.getFatherName(), user.getBirthDate(), user.getGroup(), user.getSecretQuestion(), user.getPhoneNumber(), user.getAccess(), user.getSecretAnswer());
+                         secretQuestionCheckBox.setVisible(true);
                          secretQuestionCheckBox.setOnAction(e -> HelloApplication.switchToNewWindow("SecretQuestion"));
                          //Stage stage = (Stage) authSignUpButton.getScene().getWindow();
                          //stage.close();//может сделать окно подтверждения регистрации?

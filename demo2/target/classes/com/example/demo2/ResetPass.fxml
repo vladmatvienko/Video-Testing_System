@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="402.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.ResetPassController">
+   <children>
+      <AnchorPane prefHeight="110.0" prefWidth="326.0" style="-fx-background-color: E0FFFF;">
+         <children>
+            <Label layoutX="38.0" layoutY="20.0" prefHeight="70.0" prefWidth="249.0" text="Reset Password" textFill="INDIANRED">
+               <font>
+                  <Font name="Nirmala UI Bold" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="1.0" layoutY="110.0" prefHeight="16.0" prefWidth="326.0" style="-fx-background-color: F0E68C;" />
+      <Pane layoutY="126.0" prefHeight="277.0" prefWidth="327.0" style="-fx-background-color: CD5C5C;">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="Answer secret question:" textFill="KHAKI" />
+            <Label fx:id="currentSecretAnswer" layoutX="16.0" layoutY="39.0" prefHeight="17.0" prefWidth="125.0" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

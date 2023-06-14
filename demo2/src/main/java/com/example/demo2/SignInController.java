@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -14,21 +15,13 @@ import java.sql.SQLException;
 
 public class SignInController {
 
-    @FXML
-    private Button authSignInButton;
-
-    @FXML
-    private Button loginSignUpButton;
 
     @FXML
     private TextField login_field;
 
     @FXML
     private PasswordField password_field;
-    @FXML
-    private Pane SignInPane;
-    @FXML
-    private Button SignINButton;
+
 
     @FXML
     private Label incorrectLogin;
@@ -41,6 +34,9 @@ public class SignInController {
 
     public static String loginOfCurrentUser;
 
+    @FXML
+    private Hyperlink resetPasswordLink;
+
 
 
     //сделать его скрытым по умолчанию есть метод secretQuestionField.setVisible(false);
@@ -49,17 +45,18 @@ public class SignInController {
     @FXML
     void onRegistrationLinkClick(ActionEvent event) {
        HelloApplication.switchToNewWindow("SignUp");
+
     }
 
     @FXML
     void click(ActionEvent event) throws SQLException, ClassNotFoundException {
         UserData user = new UserData();
-        loginOfCurrentUser = login_field.getText();
+
         user.setLogin(String.valueOf(login_field.getText()));
         //user.setSecretQuestion(String.valueOf(secretQuestionField.getText())); секретный вопрос не здесь
         DataBaseHandle dataBase = new DataBaseHandle();
 
-        if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
+        /*if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
             HelloApplication.switchToNewWindow("MessageToAdmin");
             dataBase.ban(loginOfCurrentUser);
             //переход в окно работы с админом и написания текста
@@ -67,24 +64,42 @@ public class SignInController {
         else {
             //восстановление пароля
            HelloApplication.switchToNewWindow("СhangePassword");
-        }
+        }*/
     }
 
     @FXML
     void initialize(){
-
+        incorrectPassword.setVisible(false);
+        incorrectLogin.setVisible(false);
+        banText.setVisible(false);
+        resetPasswordLink.setVisible(false);
+        loginOfCurrentUser = login_field.getText();
        // secretQuestionField.setVisible(false); //вставить окно с ответом на секретный вопрос
     }
     @FXML
+    void newInputLog(KeyEvent event) {
+        incorrectLogin.setVisible(false);
+
+    }
+
+    @FXML
+    void newInputPass(KeyEvent event) {
+         incorrectPassword.setVisible(false);
+    }
+    @FXML
     void onSigINButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
-        incorrectLogin.setText("");
         UserData user = new UserData();
         DataBaseHandle dataBase = new DataBaseHandle();
         user.setLogin(String.valueOf(login_field.getText()));
         user.setPassword(String.valueOf(password_field.getText()));
         //dataBase.getLoginArray();
         if(HelloApplication.passwordInputEfforts == 5 ){
-            HelloApplication.switchToNewWindow("SecretQuestion");
+            resetPasswordLink.setVisible(true);
+            banText.setVisible(true);
+            System.out.println(login_field.getText());
+            dataBase.ban(loginOfCurrentUser);
+
+            //HelloApplication.switchToNewWindow("Создать файл для проверки секретного слова");
             //нужно подключить ввод секретного слова в этом же месте или в другом окне
              //secretQuestionField.setVisible(true);
            // if(!dataBase.getSecretAnswer(user.getLogin()).toString().equals(user.getSecretQuestion())){
@@ -94,10 +109,9 @@ public class SignInController {
         }
         if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword()))
         {   System.out.println(user.getLogin());
-            //System.out.println("1"+ dataBase.checkAccess(loginOfCurrentUser )+ "2");
-            if(dataBase.checkAccess(user.getLogin()) == 0){//выводит значение в независимости от логина и параметра доступа?
+            if(dataBase.checkAccess(user.getLogin()) == 0){
                 System.out.println("Нет доступа !");
-                banText.setText("Ваша учетная запись заблокирована!");
+                banText.setVisible(true);
                 } else if (dataBase.checkAccess(user.getLogin()) == 1) {
                 //переход в окно приложения
                 System.out.println("Я узнаю Вас, велКам!");
@@ -110,7 +124,10 @@ public class SignInController {
 
         }
                   else if(!dataBase.getLoginArray().contains(user.getLogin())){
-                           incorrectLogin.setText("Неверный логин");
+                      System.out.println("Неверный  логин!");
+                      login_field.setText(null);
+                      incorrectLogin.setVisible(true);
+
 
                           }
 
@@ -118,10 +135,14 @@ public class SignInController {
         else if(!dataBase.getPasswordArray().contains(user.getPassword())){
             boolean check = false;
             password_field.setText(null);
-            incorrectPassword.setText("Неверный пароль");
+            incorrectPassword.setVisible(true);
             HelloApplication.passwordInputEfforts ++;
         }
 
+    }
+    @FXML
+    void resetPasswordLinkClick(ActionEvent event) {
+        HelloApplication.switchToNewWindow("ResetPass");
     }
 
 }
