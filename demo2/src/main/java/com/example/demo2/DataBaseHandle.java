@@ -152,4 +152,40 @@ public class DataBaseHandle extends Configs {
         statement.executeUpdate(insert);
     }
 
-}
+    public StringBuilder getPersonalInformation() throws SQLException, ClassNotFoundException {
+        Statement statement = getDbConnection().createStatement();
+
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM "+ Const.USER_TABLE);
+            StringBuilder strb = new StringBuilder();
+            while(resultSet.next()){
+
+                int id = resultSet.getInt("id");
+                int access = resultSet.getInt("access");
+                String name = resultSet.getString("name");
+                String login = resultSet.getString("login");
+                String group = resultSet.getString("group");
+                String password = resultSet.getString("password");
+                //String block_expl = resultSet.getString("block_expl");
+                String str = String.format("id: %d.  name: %s  login: %s  group: %s  password: %s  access: %d \n", id, name, login, group, password, access/*, block_expl*/);
+                strb.append(str);
+                System.out.println(str);
+
+            }
+            return strb;
+        }
+    public void RoleInfUser(int ID) throws SQLException, ClassNotFoundException {
+        Statement statement = getDbConnection().createStatement();
+        statement.executeUpdate("UPDATE " + "`"+ Const.USER_TABLE+ "` SET " +"`"+Const.USER_GROUP+"` = 'user' WHERE " + "`" + Const.USER_ID+ "` = '"+ID+"'");
+    }
+    public void RoleInfAnalytic(int ID) throws SQLException, ClassNotFoundException {
+        Statement statement = getDbConnection().createStatement();
+        statement.executeUpdate("UPDATE " + "`"+ Const.USER_TABLE+ "` SET " +"`"+Const.USER_GROUP+"` = 'analytic' WHERE " + "`" + Const.USER_ID+ "` = '"+ID+"'");
+    }
+    public void changeInf(int ID, String EXPL) throws SQLException, ClassNotFoundException {
+        Statement statement = getDbConnection().createStatement();
+        statement.executeUpdate("UPDATE " + "`"+ Const.USER_TABLE+ "` SET " +"`"+Const.USER_BLOCK_EXPL+"`"+ "= '"+EXPL+"'" + " WHERE " + "`" + Const.USER_ID+ "` = '"+ID+"'");
+    }
+
+
+    }
+

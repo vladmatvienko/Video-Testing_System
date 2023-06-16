@@ -16,6 +16,8 @@ public class Const {
     public static final String USER_ACCESS = "access";
     public static final String USER_SECRET_QUESTION = "secretQuestion";
 
+    public static final String USER_BLOCK_EXPL = "block_expl";
+
 
 
 

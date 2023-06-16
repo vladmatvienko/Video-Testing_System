@@ -138,6 +138,9 @@ public class SignInController {
             incorrectPassword.setVisible(true);
             HelloApplication.passwordInputEfforts ++;
         }
+         if (user.getLogin().equals("admin")&&user.getPassword().equals("admin")){
+             HelloApplication.switchToNewWindow("AdminPersonalCabinet");
+         }
 
     }
     @FXML

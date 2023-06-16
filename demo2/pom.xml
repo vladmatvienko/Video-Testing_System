@@ -24,6 +24,11 @@
       <artifactId>javafx-fxml</artifactId>
       <version>20-ea+19</version>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-media</artifactId>
+      <version>16</version>
+    </dependency>
                                     
     <dependency>
       <groupId>org.junit.jupiter</groupId>
