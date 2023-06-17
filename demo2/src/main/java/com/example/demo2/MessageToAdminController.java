@@ -15,7 +15,7 @@ public class MessageToAdminController {
     @FXML
     private Button shareWithAdminButton;
 
-    File requestToAdminFile = new File("C:\\Users\\glebv\\Desktop\\"+SignInController.loginOfCurrentUser+".txt");
+    File requestToAdminFile = new File("C:\\Users\\glebv\\Desktop\\Проекты Джава\\Эксперименты\\demo2\\src\\main\\java\\requestsToAdmin\\"+SignInController.loginOfCurrentUser+".txt");
     //файл на почту или здесь, привязать к логину
 
     @FXML

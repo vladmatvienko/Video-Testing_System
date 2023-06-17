@@ -96,7 +96,7 @@ public class SignInController {
         if(HelloApplication.passwordInputEfforts == 5 ){
             resetPasswordLink.setVisible(true);
             banText.setVisible(true);
-            System.out.println(login_field.getText());
+            // System.out.println(login_field.getText());
             dataBase.ban(loginOfCurrentUser);
 
             //HelloApplication.switchToNewWindow("Создать файл для проверки секретного слова");
@@ -116,10 +116,6 @@ public class SignInController {
                 //переход в окно приложения
                 System.out.println("Я узнаю Вас, велКам!");
             }
-
-
-
-
             HelloApplication.switchToNewWindow("VideoChange");
 
         }
@@ -141,7 +137,7 @@ public class SignInController {
          if (user.getLogin().equals("admin")&&user.getPassword().equals("admin")){
              HelloApplication.switchToNewWindow("AdminPersonalCabinet");
          }
-
+        loginOfCurrentUser = login_field.getText();
     }
     @FXML
     void resetPasswordLinkClick(ActionEvent event) {

@@ -73,19 +73,32 @@ public class DataBaseHandle extends Configs {
     // метод получения ответа на секретный вопрос
     // добавить в БД секретный вопрос
     public String getSecretQuestion(String login) throws SQLException, ClassNotFoundException {
-        //String insert = "SELECT" + Const.USER_SECRETANSWER +  "FROM " + Const.USER_TABLE + "WHERE" + Const.USER_ID = " + id + "; команда выдает ошибку
+
         String insert1 = "SELECT "+ "`"+ Const.USER_SECRET_QUESTION + "`"+" FROM "+ "`"+ Const.USER_TABLE + "`"+" WHERE "+ "`"+Const.USER_lOGIN + "`"+" = '"+login+"' ";
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert1);
         //ArrayList<String> secretAnswerArray = new ArrayList<>(); // если нужно будет переделать в массив
-        String stringAnswer = null;
+        String stringQuestion = "0";
         while (resultSet.next()){
-            stringAnswer = resultSet.getString("secretQuestion");
+            stringQuestion = resultSet.getString("secretQuestion");
+        }
+        return stringQuestion;
+    }
+    public String getSecretAnswer(String login) throws SQLException, ClassNotFoundException {
+
+        String insert1 = "SELECT "+ "`"+ Const.USER_SECRETANSWER + "`"+" FROM "+ "`"+ Const.USER_TABLE + "`"+" WHERE "+ "`"+Const.USER_lOGIN + "`"+" = '"+login+"' ";
+        Statement statement = getDbConnection().createStatement();
+        ResultSet resultSet = statement.executeQuery(insert1);
+        //ArrayList<String> secretAnswerArray = new ArrayList<>(); // если нужно будет переделать в массив
+        String stringAnswer = "0";
+        while (resultSet.next()){
+            stringAnswer = resultSet.getString("secretAnswer");
         }
         return stringAnswer;
     }
     public String getThisPassword(String login) throws SQLException, ClassNotFoundException {
-        String insert = "SELECT " + Const.USER_PASSWORD + " FROM " + Const.USER_TABLE + " WHERE " + Const.USER_lOGIN + " = '" + login + "'";
+        String insert = "SELECT * FROM "+ Const.USER_TABLE;
+        //String insert = "SELECT " + Const.USER_PASSWORD + " FROM " + Const.USER_TABLE + " WHERE " + Const.USER_lOGIN + " = '" + login + "'";
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert);
         String password = null;
@@ -96,7 +109,8 @@ public class DataBaseHandle extends Configs {
     }//ошибка Illegal operation on empty result set.*/ проверить работоспособность
     public void setPassword(String password, String login) throws SQLException, ClassNotFoundException {
         //UPDATE elements SET n2 = 30 WHERE id = 22;
-        String insert = "UPDATE " + Const.USER_TABLE + " SET " + Const.USER_PASSWORD+ " = '"+password+"' "+ "WHERE " + Const.USER_lOGIN + " = '"+login+"'";
+        // String insert = "UPDATE `users` SET `password` = '"+password+"' WHERE (`login` = '"+login+"')";
+        String insert = "UPDATE " +"`"+ Const.USER_TABLE +"`"+ " SET " +"`"+ Const.USER_PASSWORD+"`"+ " = '"+password+"' "+ "WHERE " +"(`"+ Const.USER_lOGIN+"`"+ " = '"+login+"')";
         Statement statement = getDbConnection().createStatement();
         statement.executeUpdate(insert);
 
