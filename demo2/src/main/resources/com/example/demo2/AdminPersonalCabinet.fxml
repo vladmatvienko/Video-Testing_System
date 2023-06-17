@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.AdminPersonalCabinetController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E0FFFF;">
+            <children>
+                <TextArea fx:id="All_Users_TextArea" layoutX="167.0" layoutY="53.0" prefHeight="294.0" prefWidth="404.0" />
+            </children></AnchorPane>
+        <AnchorPane prefHeight="400.0" prefWidth="142.0" style="-fx-background-color: CD5C5C;">
+            <children>
+                <Text fill="LIGHTCYAN" layoutX="14.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin mode">
+                    <font>
+                        <Font name="Nirmala UI Bold" size="12.0" />
+                    </font>
+                </Text>
+                <Button fx:id="Personal_cab_button" layoutX="10.0" layoutY="53.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: E0FFFF;" text="Личный кабинет" textFill="INDIANRED" />
+                <Button fx:id="Control_button" layoutX="10.0" layoutY="87.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: E0FFFF;" text="Управление" textFill="INDIANRED" />
+                <Button fx:id="Video_base_button" layoutX="10.0" layoutY="121.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: E0FFFF;" text="Видео-база" textFill="INDIANRED" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="402.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.ResetPassController">
+   <children>
+      <AnchorPane prefHeight="110.0" prefWidth="326.0" style="-fx-background-color: E0FFFF;">
+         <children>
+            <Label layoutX="38.0" layoutY="20.0" prefHeight="70.0" prefWidth="249.0" text="Reset Password" textFill="INDIANRED">
+               <font>
+                  <Font name="Nirmala UI Bold" size="34.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="1.0" layoutY="110.0" prefHeight="16.0" prefWidth="326.0" style="-fx-background-color: F0E68C;" />
+      <Pane layoutY="126.0" prefHeight="277.0" prefWidth="327.0" style="-fx-background-color: CD5C5C;">
+         <children>
+            <Label layoutX="77.0" layoutY="23.0" text="Ответьте на секретный вопрос:" textFill="KHAKI" />
+            <Label fx:id="currentSecretAnswer" layoutX="53.0" layoutY="57.0" prefHeight="17.0" prefWidth="222.0" textFill="#4b4a4a" underline="true">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Label>
+            <TextField fx:id="AnswerOnSecretQuestion" layoutX="89.0" layoutY="97.0" onAction="#ClickOnAnswerField" />
+            <TextField fx:id="NewPassword_Field" layoutX="88.0" layoutY="156.0" onKeyTyped="#inputNewPassEvent" />
+            <Label fx:id="InputNewPassLabel" layoutX="96.0" layoutY="130.0" prefHeight="17.0" prefWidth="133.0" text="Введите новый пароль:" textFill="KHAKI" />
+            <Label fx:id="ErrorThesamePasswordField" layoutX="55.0" layoutY="188.0" text="Пароль должен отличаться от старого!" textFill="KHAKI" />
+            <Button fx:id="saveButton" layoutX="127.0" layoutY="230.0" mnemonicParsing="false" onAction="#ClickOnSaveButton" text="Сохранить" textFill="INDIANRED" />
+            <Label fx:id="successfulChangeLabel" layoutX="89.0" layoutY="205.0" prefHeight="17.0" prefWidth="149.0" text="Пароль успешно изменен" textFill="KHAKI" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

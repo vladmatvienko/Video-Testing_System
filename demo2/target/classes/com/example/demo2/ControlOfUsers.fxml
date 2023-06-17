@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: E0FFFF;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.ControlOfUsersController">
+    <children>
+        <AnchorPane prefHeight="400.0" prefWidth="146.0" style="-fx-background-color: CD5C5C;">
+            <children>
+                <Text fill="LIGHTCYAN" layoutX="26.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="- Управление">
+                    <font>
+                        <Font name="Nirmala UI Bold" size="12.0" />
+                    </font>
+                </Text>
+                <Button fx:id="Block_button" layoutX="20.0" layoutY="81.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Заблокировать" />
+                <Button fx:id="Role_button" layoutX="20.0" layoutY="121.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Выбрать роль" />
+                <Button fx:id="Access_button" layoutX="20.0" layoutY="164.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Вернуть доступ" />
+            </children>
+        </AnchorPane>
+        <Text fill="LIGHTCYAN" layoutX="24.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin mode">
+            <font>
+                <Font name="Nirmala UI Bold" size="12.0" />
+            </font>
+        </Text>
+    </children>
+</AnchorPane>
