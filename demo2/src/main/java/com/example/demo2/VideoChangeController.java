@@ -2,23 +2,10 @@ package com.example.demo2;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-
-import java.io.IOException;
-
-
 public class VideoChangeController {
     public int Amount_of_Video = HelloApplication.Amount_of_Video-1;
 
-    @FXML private Button NextButton;
-    @FXML private Button BackButton;
-    @FXML private Button PlayButton;
-    @FXML private Button Back_to_main_Button;
+
 
     @FXML void NextVideo(ActionEvent event){
         if (HelloApplication.ID<Amount_of_Video) {

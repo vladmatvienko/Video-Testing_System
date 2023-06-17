@@ -3,18 +3,9 @@ package com.example.demo2;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 public class RoleWindowController {
-        @FXML
-        private ResourceBundle resources;
-
-        @FXML
-        private URL location;
-
         @FXML
         private TextField ID_field;
 

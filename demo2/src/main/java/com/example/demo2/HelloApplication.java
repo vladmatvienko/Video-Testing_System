@@ -6,13 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.Scanner;
 import java.io.IOException;
 
 
@@ -31,7 +25,8 @@ public class HelloApplication extends Application {
         stage.show();
         //Установка иконки приложения
         InputStream iconStream = getClass().getResourceAsStream("1.jpg");
-          Image image = new Image(iconStream);
+        assert iconStream != null;
+        Image image = new Image(iconStream);
           stage.getIcons().add(image);
     }
 

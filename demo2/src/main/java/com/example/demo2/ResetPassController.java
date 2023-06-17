@@ -51,7 +51,7 @@ public class ResetPassController {
          ErrorThesamePasswordField.setVisible(false);
     }
 
-    @FXML
+    @FXML //могут быть косяки
     void ClickOnSaveButton(ActionEvent event) throws SQLException, ClassNotFoundException {
         user.setPassword(NewPassword_Field.getText().trim());
         user.setLogin(SignInController.loginOfCurrentUser);//видимо не в том месте был loginOfCurrentUser в SignIn, так как был 0

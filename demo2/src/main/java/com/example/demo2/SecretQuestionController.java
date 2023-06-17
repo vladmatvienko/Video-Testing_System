@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -12,8 +11,6 @@ import java.sql.SQLException;
 
 public class SecretQuestionController {
     ObservableList<String> secretQuestionList = FXCollections.observableArrayList("Девичья фамилия мамы", "Оценка по матанализу", "Вес");
-    @FXML
-    private Button SaveButton;
     @FXML
     private TextField secretAnswerField;
     @FXML

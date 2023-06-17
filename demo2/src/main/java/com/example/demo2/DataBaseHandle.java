@@ -16,19 +16,17 @@ public class DataBaseHandle extends Configs {
     // метод добавление пользователя
     public void SignUpUser(String login, String password, String name, String surname, String fatherName, String birthDate, String group,
                             String secretQuestion, String email, String phoneNumber, int access, String
-                           secretAnswer){ //включить остальные параметры пользователя
-       String insert = //"INSERT INTO users(name)\n"+"VALUES(?)";
-       //INSERT INTO `1`.`users` (`id`, `login`, `password`, `name`, `surname`, `fatherName`, `birthDate`, `group`, `secretQuestion`, `email`, `phoneNumber`, `access`) VALUES ('lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol', 'lol');
+                           secretAnswer){
+       String insert =
         "INSERT INTO" + " " + Const.USER_TABLE + "("
                +"`"+ Const.USER_NAME + "`, `" + Const.USER_SURNAME + "`, `" + Const.USER_EMAIL + "`, `" + Const.USER_lOGIN +
                 "`, `" + Const.USER_PASSWORD + "`, `" +
                 Const.USER_FATHERNAME + "`, `" + Const.USER_BIRTHDATE + "`, `" + Const.USER_GROUP + "`, " +
                 "`" + Const.USER_SECRET_QUESTION + "`, `" + Const.USER_PHONENUMBER + "`, `"
-                + Const.USER_ACCESS + "`, `"+Const.USER_SECRETANSWER+"`)" +  " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)"; //какая-то ошибка считывания и подключения
+                + Const.USER_ACCESS + "`, `"+Const.USER_SECRETANSWER+"`)" +  " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
         try {
        PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        prSt.setString(1, login); //проверить считает с нуля или 1
-        //изменить метод для вставки фамилии, почты и тд по аналогии...
+        prSt.setString(1, login);
         prSt.setString(2, password);
         prSt.setString(3, name);
         prSt.setString(4, surname);
@@ -45,7 +43,7 @@ public class DataBaseHandle extends Configs {
             throw new RuntimeException(e);
         }
     }
-    //метод для получения массива с логинами(сделать так, чтобы он брал сразу только логины, а не все)
+    //метод для получения массива с логинами
     //возвращает ArrayList всех логинов
     public ArrayList<String> getLoginArray() throws SQLException, ClassNotFoundException {
         String insert = "SELECT * FROM " + Const.USER_TABLE; // сюда пишем команду MySQL
@@ -71,13 +69,12 @@ public class DataBaseHandle extends Configs {
         return passwordsArray;
     }
     // метод получения ответа на секретный вопрос
-    // добавить в БД секретный вопрос
+
     public String getSecretQuestion(String login) throws SQLException, ClassNotFoundException {
 
         String insert1 = "SELECT "+ "`"+ Const.USER_SECRET_QUESTION + "`"+" FROM "+ "`"+ Const.USER_TABLE + "`"+" WHERE "+ "`"+Const.USER_lOGIN + "`"+" = '"+login+"' ";
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert1);
-        //ArrayList<String> secretAnswerArray = new ArrayList<>(); // если нужно будет переделать в массив
         String stringQuestion = "0";
         while (resultSet.next()){
             stringQuestion = resultSet.getString("secretQuestion");
@@ -85,11 +82,9 @@ public class DataBaseHandle extends Configs {
         return stringQuestion;
     }
     public String getSecretAnswer(String login) throws SQLException, ClassNotFoundException {
-
         String insert1 = "SELECT "+ "`"+ Const.USER_SECRETANSWER + "`"+" FROM "+ "`"+ Const.USER_TABLE + "`"+" WHERE "+ "`"+Const.USER_lOGIN + "`"+" = '"+login+"' ";
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert1);
-        //ArrayList<String> secretAnswerArray = new ArrayList<>(); // если нужно будет переделать в массив
         String stringAnswer = "0";
         while (resultSet.next()){
             stringAnswer = resultSet.getString("secretAnswer");
@@ -97,8 +92,7 @@ public class DataBaseHandle extends Configs {
         return stringAnswer;
     }
     public String getThisPassword(String login) throws SQLException, ClassNotFoundException {
-        String insert = "SELECT * FROM "+ Const.USER_TABLE;
-        //String insert = "SELECT " + Const.USER_PASSWORD + " FROM " + Const.USER_TABLE + " WHERE " + Const.USER_lOGIN + " = '" + login + "'";
+        String insert = "SELECT " + Const.USER_PASSWORD + " FROM " + Const.USER_TABLE + " WHERE " + Const.USER_lOGIN + " = '" + login + "'";
         Statement statement = getDbConnection().createStatement();
         ResultSet resultSet = statement.executeQuery(insert);
         String password = null;
@@ -106,10 +100,8 @@ public class DataBaseHandle extends Configs {
             password = resultSet.getString("password");
         }
         return password;
-    }//ошибка Illegal operation on empty result set.*/ проверить работоспособность
+    }
     public void setPassword(String password, String login) throws SQLException, ClassNotFoundException {
-        //UPDATE elements SET n2 = 30 WHERE id = 22;
-        // String insert = "UPDATE `users` SET `password` = '"+password+"' WHERE (`login` = '"+login+"')";
         String insert = "UPDATE " +"`"+ Const.USER_TABLE +"`"+ " SET " +"`"+ Const.USER_PASSWORD+"`"+ " = '"+password+"' "+ "WHERE " +"(`"+ Const.USER_lOGIN+"`"+ " = '"+login+"')";
         Statement statement = getDbConnection().createStatement();
         statement.executeUpdate(insert);
@@ -133,12 +125,10 @@ public class DataBaseHandle extends Configs {
         int access = 3;
           while (resultSet.next()){
               access = resultSet.getInt("access");
-              //System.out.println(access);
               }
        return access;
     }
      public void deleteUser(int id) throws SQLException, ClassNotFoundException {
-        //DELETE FROM `1`.`users` WHERE (`id` = '5');
         String insert = "DELETE FROM " + "`"+ Const.USER_TABLE  +"` "+ "WHERE " + "(`"+ Const.USER_ID  +"`" +" = '"+id+"') ";
          Statement statement = getDbConnection().createStatement();
          statement.executeUpdate(insert);
@@ -150,7 +140,6 @@ public class DataBaseHandle extends Configs {
          int id = 0;
          while (resultSet.next()){
              id = resultSet.getInt("id");
-             //System.out.println(access);
          }
          return id;
      }
@@ -179,8 +168,8 @@ public class DataBaseHandle extends Configs {
                 String login = resultSet.getString("login");
                 String group = resultSet.getString("group");
                 String password = resultSet.getString("password");
-                //String block_expl = resultSet.getString("block_expl");
-                String str = String.format("id: %d.  name: %s  login: %s  group: %s  password: %s  access: %d \n", id, name, login, group, password, access/*, block_expl*/);
+                String block_expl = resultSet.getString("block_expl");
+                String str = String.format("id: %d.  name: %s  login: %s  group: %s  password: %s  access: %d \n", id, name, login, group, password, access, block_expl);
                 strb.append(str);
                 System.out.println(str);
 

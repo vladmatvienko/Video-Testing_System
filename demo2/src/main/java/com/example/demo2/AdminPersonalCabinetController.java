@@ -1,24 +1,16 @@
 package com.example.demo2;
 
-import java.io.IOException;
-import java.net.URL;
+
+
 import java.sql.SQLException;
-import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 public class AdminPersonalCabinetController {
 
-    @FXML
-    private ResourceBundle resources;
 
-    @FXML
-    private URL location;
 
     @FXML
     private Button Control_button;
