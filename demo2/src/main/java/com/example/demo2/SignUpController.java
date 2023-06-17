@@ -66,7 +66,7 @@ public class SignUpController {
         UserData user = new UserData();
         //регулярные выражения и проверки
         ArrayList<String> passwordsArray = db.getPasswordArray();
-            if(passwordsArray.contains(login_field.getText())){
+            if(passwordsArray.contains(login_field.getText().trim())){
               loginIsUsed.setVisible(true);
                login_field.setText(null);
                }
@@ -85,7 +85,7 @@ public class SignUpController {
                          user.setAccess(1);
                          loginOfCurrentUser = user.getLogin().trim();
                         //проверить этот метод *
-                         db.SignUpUser(user.getName(), user.getSurname(),user.getEmail(), user.getLogin(), user.getPassword(), user.getFatherName(), user.getBirthDate(), user.getGroup(), user.getSecretQuestion(), user.getPhoneNumber(), user.getAccess(), user.getSecretAnswer());
+                         db.SignUpUser(user.getName(), user.getSurname(),user.getEmail(), user.getLogin(), user.getPassword(), user.getFatherName(), user.getBirthDate(), user.getGroup(), user.getSecretQuestion(), user.getPhoneNumber(), user.getAccess(), user.getSecretAnswer().trim());
                          secretQuestionCheckBox.setVisible(true);
                          secretQuestionCheckBox.setOnAction(e -> HelloApplication.switchToNewWindow("SecretQuestion"));
                          //Stage stage = (Stage) authSignUpButton.getScene().getWindow();

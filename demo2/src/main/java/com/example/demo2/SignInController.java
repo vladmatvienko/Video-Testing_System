@@ -52,7 +52,7 @@ public class SignInController {
     void click(ActionEvent event) throws SQLException, ClassNotFoundException {
         UserData user = new UserData();
 
-        user.setLogin(String.valueOf(login_field.getText()));
+        user.setLogin(String.valueOf(login_field.getText().trim()));
         //user.setSecretQuestion(String.valueOf(secretQuestionField.getText())); секретный вопрос не здесь
         DataBaseHandle dataBase = new DataBaseHandle();
 
@@ -73,7 +73,7 @@ public class SignInController {
         incorrectLogin.setVisible(false);
         banText.setVisible(false);
         resetPasswordLink.setVisible(false);
-        loginOfCurrentUser = login_field.getText();
+        loginOfCurrentUser = login_field.getText().trim();
        // secretQuestionField.setVisible(false); //вставить окно с ответом на секретный вопрос
     }
     @FXML
@@ -90,8 +90,8 @@ public class SignInController {
     void onSigINButtonClick(ActionEvent event) throws SQLException, ClassNotFoundException {
         UserData user = new UserData();
         DataBaseHandle dataBase = new DataBaseHandle();
-        user.setLogin(String.valueOf(login_field.getText()));
-        user.setPassword(String.valueOf(password_field.getText()));
+        user.setLogin(String.valueOf(login_field.getText().trim()));
+        user.setPassword(String.valueOf(password_field.getText().trim()));
         //dataBase.getLoginArray();
         if(HelloApplication.passwordInputEfforts == 5 ){
             resetPasswordLink.setVisible(true);
@@ -108,11 +108,11 @@ public class SignInController {
            // }
         }
         if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword()))
-        {   System.out.println(user.getLogin());
-            if(dataBase.checkAccess(user.getLogin()) == 0){
+        {   System.out.println(user.getLogin().trim());
+            if(dataBase.checkAccess(user.getLogin().trim()) == 0){
                 System.out.println("Нет доступа !");
                 banText.setVisible(true);
-                } else if (dataBase.checkAccess(user.getLogin()) == 1) {
+                } else if (dataBase.checkAccess(user.getLogin().trim()) == 1) {
                 //переход в окно приложения
                 System.out.println("Я узнаю Вас, велКам!");
             }
@@ -134,10 +134,10 @@ public class SignInController {
             incorrectPassword.setVisible(true);
             HelloApplication.passwordInputEfforts ++;
         }
-         if (user.getLogin().equals("admin")&&user.getPassword().equals("admin")){
+         if (user.getLogin().trim().equals("admin")&&user.getPassword().equals("admin")){
              HelloApplication.switchToNewWindow("AdminPersonalCabinet");
          }
-        loginOfCurrentUser = login_field.getText();
+        loginOfCurrentUser = login_field.getText().trim();
     }
     @FXML
     void resetPasswordLinkClick(ActionEvent event) {

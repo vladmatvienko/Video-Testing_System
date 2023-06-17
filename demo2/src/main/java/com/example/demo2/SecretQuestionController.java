@@ -22,15 +22,15 @@ public class SecretQuestionController {
     public void initialize() throws SQLException, ClassNotFoundException {
     secretQuestionComboBox.setValue("Девичья фамилия мамы");
     secretQuestionComboBox.setItems(secretQuestionList);
-    System.out.println(secretQuestionComboBox.getValue());
-    db.setSecretQuestion(SignUpController.loginOfCurrentUser, secretQuestionComboBox.getValue());
+    System.out.println(secretQuestionComboBox.getValue().trim());
+    db.setSecretQuestion(SignUpController.loginOfCurrentUser, secretQuestionComboBox.getValue().trim());
 
 
     }
     @FXML
     void SaveSecretQuestion(ActionEvent event) throws SQLException, ClassNotFoundException {
         System.out.println("Проверка");
-        db.setSecretAnswer(SignUpController.loginOfCurrentUser, secretAnswerField.getText());
+        db.setSecretAnswer(SignUpController.loginOfCurrentUser, secretAnswerField.getText().trim());
 
     }
 

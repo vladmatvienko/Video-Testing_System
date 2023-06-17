@@ -35,7 +35,7 @@ public class ResetPassController {
 
     @FXML
     void ClickOnAnswerField(ActionEvent event) throws SQLException, ClassNotFoundException {
-        if(AnswerOnSecretQuestion.getText().equals(db.getSecretAnswer(SignInController.loginOfCurrentUser))){
+        if(AnswerOnSecretQuestion.getText().trim().equals(db.getSecretAnswer(SignInController.loginOfCurrentUser))){
             InputNewPassLabel.setVisible(true);
             NewPassword_Field.setVisible(true);
             saveButton.setVisible(true);
@@ -53,16 +53,16 @@ public class ResetPassController {
 
     @FXML
     void ClickOnSaveButton(ActionEvent event) throws SQLException, ClassNotFoundException {
-        user.setPassword(NewPassword_Field.getText());
+        user.setPassword(NewPassword_Field.getText().trim());
         user.setLogin(SignInController.loginOfCurrentUser);//видимо не в том месте был loginOfCurrentUser в SignIn, так как был 0
-        if(db.getThisPassword(SignInController.loginOfCurrentUser).equals(NewPassword_Field.getText())){
+        if(db.getThisPassword(SignInController.loginOfCurrentUser).equals(NewPassword_Field.getText().trim())){
             ErrorThesamePasswordField.setVisible(true);
             NewPassword_Field.setText(null);}
-        else if (!db.getThisPassword(SignInController.loginOfCurrentUser).equals(NewPassword_Field.getText())) {
-            db.setPassword(NewPassword_Field.getText(), SignInController.loginOfCurrentUser);
+        else if (!db.getThisPassword(SignInController.loginOfCurrentUser).equals(NewPassword_Field.getText().trim())) {
+            db.setPassword(NewPassword_Field.getText().trim(), SignInController.loginOfCurrentUser);
             successfulChangeLabel.setVisible(true);
             db.antiban(SignInController.loginOfCurrentUser);
-            db.setPassword(NewPassword_Field.getText(), SignInController.loginOfCurrentUser);
+            db.setPassword(NewPassword_Field.getText().trim(), SignInController.loginOfCurrentUser);
             //обновляем пароль выводим надпись успешной смены
         }
         System.out.println("Правильно!");
