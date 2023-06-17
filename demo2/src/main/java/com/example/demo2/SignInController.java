@@ -120,7 +120,7 @@ public class SignInController {
 
 
 
-            //HelloApplication.switchToNewWindow("Proga");
+            HelloApplication.switchToNewWindow("VideoChange");
 
         }
                   else if(!dataBase.getLoginArray().contains(user.getLogin())){

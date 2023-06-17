@@ -18,6 +18,10 @@ import java.io.IOException;
 
 
 public class HelloApplication extends Application {
+    static String[] VideoName = {"0", "1", "2", "3"};
+    static int Amount_of_Video = VideoName.length;
+    static int ID = 0;
+    static int passwordInputEfforts = 0;
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
@@ -30,7 +34,7 @@ public class HelloApplication extends Application {
           Image image = new Image(iconStream);
           stage.getIcons().add(image);
     }
-    static int passwordInputEfforts = 0;
+
     public static void main(String[] args)  {
         launch();
 

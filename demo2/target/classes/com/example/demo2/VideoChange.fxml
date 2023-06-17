@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: e60000;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo2.VideoChangeController">
+    <AnchorPane layoutX="-89.0" layoutY="38.0" prefHeight="554.0" prefWidth="1000.0" rotate="-32.0" style="-fx-background-color: ffebee;" />
+    <AnchorPane layoutX="173.0" layoutY="150.0" prefHeight="350.0" prefWidth="448.0" style="-fx-background-color: #381418;" />
+    <Label layoutX="27.0" layoutY="69.0" rotate="-32.0" text="Видеотесты">
+        <font>
+            <Font name="Franklin Gothic Demi Cond" size="47.0" />
+        </font>
+    </Label>
+    <GridPane prefHeight="600.0" prefWidth="800.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="262.199951171875" minWidth="10.0" prefWidth="90.99998474121094" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="450.2000274658203" minWidth="10.0" prefWidth="443.00001525878906" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="197.19998779296876" minHeight="10.0" prefHeight="147.39999389648438" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="392.8000122070313" minHeight="10.0" prefHeight="350.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="102.79999389648435" minHeight="10.0" prefHeight="99.60000000000002" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <rotationAxis>
+            <Point3D />
+        </rotationAxis>
+        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Button fx:id="BackButton" cache="true" layoutX="-2.0" layoutY="146.0" mnemonicParsing="false" onAction="#PreviousVideo" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: ffebee;" text="&lt;---" textAlignment="CENTER">
+                <font>
+                    <Font name="Lucida Fax Regular" size="22.0" />
+                </font>
+                <textFill>
+                    <LinearGradient endX="0.8106060732494701">
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color red="1.0" />
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color opacity="0.3533434569835663" />
+                                </color>
+                            </Stop>
+                        </stops>
+                    </LinearGradient>
+                </textFill>
+            </Button>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="NextButton" layoutX="2.0" layoutY="145.0" mnemonicParsing="false" onAction="#NextVideo" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: ffebee;" text="---&gt;" textAlignment="CENTER">
+                <font>
+                    <Font name="Lucida Fax Regular" size="22.0" />
+                </font>
+                <textFill>
+                    <LinearGradient endX="0.18560605518745654" startX="1.0">
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color red="1.0" />
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color opacity="0.3533434569835663" />
+                                </color>
+                            </Stop>
+                        </stops>
+                    </LinearGradient>
+                </textFill>
+            </Button>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Button fx:id="Back_to_main_Button" layoutX="43.0" layoutY="14.0" mnemonicParsing="false" onAction="#Back_To_Main" prefHeight="45.0" prefWidth="85.0" style="-fx-background-color: ffebee;" text="Назад" textAlignment="CENTER">
+                <font>
+                    <Font name="Franklin Gothic Demi Cond" size="23.0" />
+                </font>
+                <textFill>
+                    <RadialGradient centerX="0.5" centerY="0.5568181818181819">
+                        <stops>
+                            <Stop>
+                                <color>
+                                    <Color red="1.0" />
+                                </color>
+                            </Stop>
+                            <Stop offset="1.0">
+                                <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                                </color>
+                            </Stop>
+                        </stops>
+                    </RadialGradient>
+                </textFill>
+            </Button>
+        </Pane>
+        <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <children>
+                <Button fx:id="PlayButton" layoutX="150.0" layoutY="101.0" mnemonicParsing="false" onAction="#PlayVideo" prefHeight="150.0" prefWidth="150.0" style="-fx-background-color: #381418;" text=" ">
+                    <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@Play.png" />
+                            </image>
+                        </ImageView>
+                    </graphic></Button>
+            </children>
+        </Pane>
+    </GridPane>
+</AnchorPane>
