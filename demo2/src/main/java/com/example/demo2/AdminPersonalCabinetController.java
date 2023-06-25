@@ -4,6 +4,7 @@ package com.example.demo2;
 
 import java.sql.SQLException;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -47,5 +48,9 @@ public class AdminPersonalCabinetController {
 
     }
 
+    @FXML
+    void clickVideoBase(ActionEvent event) {
+        HelloApplication.switchToNewWindow("VideoChangeAdmin");
 
+    }
 }

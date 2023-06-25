@@ -117,6 +117,11 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
+                <Label fx:id="VideoName1" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="277.0" prefHeight="61.0" prefWidth="441.0" text="ДВС" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+                    <font>
+                        <Font name="Franklin Gothic Demi Cond" size="23.0" />
+                    </font>
+                </Label>
             </children>
         </Pane>
     </GridPane>

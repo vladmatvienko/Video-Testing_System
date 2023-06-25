@@ -19,7 +19,7 @@
                 </Text>
                 <Button fx:id="Personal_cab_button" layoutX="10.0" layoutY="53.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: E0FFFF;" text="Личный кабинет" textFill="INDIANRED" />
                 <Button fx:id="Control_button" layoutX="10.0" layoutY="87.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" style="-fx-background-color: E0FFFF;" text="Управление" textFill="INDIANRED" />
-                <Button fx:id="Video_base_button" layoutX="10.0" layoutY="121.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: E0FFFF;" text="Видео-база" textFill="INDIANRED" />
+                <Button fx:id="Video_base_button" layoutX="10.0" layoutY="121.0" mnemonicParsing="false" onAction="#clickVideoBase" prefHeight="26.0" prefWidth="121.0" style="-fx-background-color: E0FFFF;" text="Видео-база" textFill="INDIANRED" />
             </children>
         </AnchorPane>
     </children>

@@ -63,10 +63,11 @@ public class SignInController {
             banText.setVisible(true);
             dataBase.ban(loginOfCurrentUser);
         }
-        if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword()))
+        if(dataBase.getLoginArray().contains(user.getLogin()) && dataBase.getPasswordArray().contains(user.getPassword())&&!user.getLogin().trim().equals("admin")&&!user.getPassword().equals("admin"))
         {   System.out.println(user.getLogin().trim());
             if(dataBase.checkAccess(user.getLogin().trim()) == 0){
                 System.out.println("Нет доступа !");
+                HelloApplication.switchToNewWindow("MessageToAdmin");
                 banText.setVisible(true);
                 } else if (dataBase.checkAccess(user.getLogin().trim()) == 1) {
                 System.out.println("Я узнаю Вас, велКам!");
